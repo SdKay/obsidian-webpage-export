@@ -195,32 +195,45 @@ export class FilePickerTree extends FileTree
 
 	public evaluateFolderChecks()
 	{
-		// if all a folder's children are checked, check the folder, otherwise uncheck it
-		this.forAllChildren((child) => 
+		// tri-state a folder's checkbox based on its descendant files:
+		// none checked -> unchecked, all checked -> checked, some checked -> indeterminate
+		this.forAllChildren((child) =>
 		{
 			if(child.isFolder)
 			{
-				const uncheckedChildren = child?.itemEl?.querySelectorAll(".nav-file .file-checkbox:not(.checked)");
+				const totalChildren = child?.itemEl?.querySelectorAll(".nav-file .file-checkbox").length ?? 0;
+				const checkedChildren = child?.itemEl?.querySelectorAll(".nav-file .file-checkbox.checked").length ?? 0;
 
-				if (!child.checked && uncheckedChildren?.length == 0)
+				if (totalChildren > 0 && checkedChildren == totalChildren)
 				{
 					child.check(true, false, true);
 				}
-				else if (uncheckedChildren?.length ?? 0 > 0)
+				else if (checkedChildren == 0)
 				{
 					child.check(false, false, true);
 				}
+				else
+				{
+					child.setIndeterminate();
+				}
 			}
-		});	
+		});
 
-		// if all folders are checked, check the select all button, otherwise uncheck it
-		if (this.children.reduce((acc, child) => acc && child.checked, true))
+		// tri-state the select all button the same way, based on the top-level items
+		const checkedCount = this.children.filter(child => child.checked).length;
+		const indeterminateCount = this.children.filter(child => child.checkbox.indeterminate).length;
+
+		if (this.children.length > 0 && checkedCount == this.children.length)
 		{
 			this.selectAllItem?.check(true, false, true);
 		}
-		else
+		else if (checkedCount == 0 && indeterminateCount == 0)
 		{
 			this.selectAllItem?.check(false, false, true);
+		}
+		else
+		{
+			this.selectAllItem?.setIndeterminate();
 		}
 	}
 }
@@ -262,9 +275,23 @@ export class FilePickerTreeItem extends FileTreeItem
 	{
 		this.checked = checked;
 		this.checkbox.checked = checked;
+		this.checkbox.indeterminate = false;
+		this.checkbox.removeAttribute("data-indeterminate");
 		this.checkbox.classList.toggle("checked", checked);
 		if (!skipChildren) this.checkAllChildren(checked);
 		if(evaluate) this.tree.evaluateFolderChecks();
+	}
+
+	// some but not all descendants are checked. Obsidian's checkbox CSS keys off the
+	// `data-indeterminate="true"` attribute (`input[type=checkbox][data-indeterminate="true"]:not(:checked):after`
+	// in app.css), not the native `:indeterminate` pseudo-class, so both must be set.
+	public setIndeterminate()
+	{
+		this.checked = false;
+		this.checkbox.checked = false;
+		this.checkbox.indeterminate = true;
+		this.checkbox.setAttribute("data-indeterminate", "true");
+		this.checkbox.classList.toggle("checked", false);
 	}
 
 	public toggle(evaluate = false)

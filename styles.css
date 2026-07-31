@@ -256,6 +256,22 @@ button.html-progress-cancel
 	margin-right: 1em;
 }
 
+/* Obsidian's own indeterminate style draws a thin horizontal bar
+   (input[type=checkbox][data-indeterminate="true"]:not(:checked):after in app.css);
+   override it here with a small filled square instead. */
+.file-picker input[type=checkbox][data-indeterminate="true"]:not(:checked):after
+{
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 50%;
+	height: 50%;
+	border-radius: 1px;
+	background-color: var(--checkbox-color, var(--interactive-accent));
+}
+
 .file-picker .tree-item-self > .tree-item-inner
 {
 	padding: 0 0.3em !important;
