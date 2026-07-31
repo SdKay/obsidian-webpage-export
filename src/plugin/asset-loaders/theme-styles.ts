@@ -13,8 +13,12 @@ export class ThemeStyles extends AssetLoader
         super("theme.css", "", null, AssetType.Style, InlinePolicy.AutoHead, true, Mutability.Dynamic, LoadMethod.Default, 8);
     }
 
+	// "pdf" intentionally excluded: it's a common substring in content-facing
+	// selectors (e.g. a theme's `a[href$=".pdf"]::before` file-type icon), and this
+	// list is checked unconditionally before the "keep" rescue list, so it can't be
+	// rescued once matched here.
 	static readonly obsidianStylesFilter =
-	["cm-", "cm6", "CodeMirror", "pdf"];
+	["cm-", "cm6", "CodeMirror"];
 	static readonly stylesKeep = ["@media", "tree", "scrollbar", "input[type", "table", "markdown-rendered", "inline-embed"];
     
 

@@ -46,6 +46,21 @@ h1:hover .collapse-indicator, h2:hover .collapse-indicator, h3:hover .collapse-i
     }
 }
 
+/*#region Emoji */
+
+/* Obsidian's own img.emoji sizing rule is scoped under a selector our CSS filter
+   discards (workspace-leaf-content), so twemoji images fall back to their native
+   72x72 asset size instead of being sized to the surrounding text. */
+img.emoji
+{
+	height: 1.2em;
+	width: 1.2em;
+	vertical-align: -0.2em;
+	object-fit: contain;
+}
+
+/*#endregion */
+
 /*#region Misc Hiding */
 
 .mod-header .metadata-container
