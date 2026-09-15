@@ -1,4 +1,7 @@
-# Webpage HTML Export
+# HTML Export
+
+> [!NOTE]
+> This plugin was originally created by [Nathan George (KosmosisDire)](https://github.com/KosmosisDire/obsidian-webpage-export) under the name "Webpage HTML Export" — huge thanks to him for building and maintaining it for years. Since the original repository has been inactive for a while, I'm now maintaining this fork (renamed to "HTML Export" since the original name/id was already taken in the community plugin registry) to keep it working with newer versions of Obsidian and to keep fixing bugs.
 
 Export html from single files, canvas pages, or whole vaults. Direct access to the exported HTML files allows you to publish your digital garden anywhere. Focuses on flexibility, features, and style parity.
 Demo / docs: [docs.obsidianweb.net](https://docs.obsidianweb.net/)
@@ -26,11 +29,11 @@ https://docs.obsidianweb.net/
 
 ## Installation
 
-Install from Obsidian Community Plugins: [Open in Obsidian](https://obsidian.md/plugins?id=webpage-html-export)
+Install from Obsidian Community Plugins: [Open in Obsidian](https://obsidian.md/plugins?id=html-export)
 
 ### Manual Installation
 
-1. Download the `.zip` file from the [Latest Release](https://github.com/KosmosisDire/obsidian-webpage-export/releases/latest), or from any other release version.
+1. Download the `.zip` file from the [Latest Release](https://github.com/SdKay/obsidian-webpage-export/releases/latest), or from any other release version.
 2. Unzip into: `{VaultFolder}/.obsidian/plugins/`
 3. Reload obsidian
 
@@ -41,7 +44,7 @@ Either follow the instructions above for a beta release, or:
 1. Install the [BRAT plugin](https://obsidian.md/plugins?id=obsidian42-brat)
 2. Open the brat settings
 3. Select add beta plugin
-4. Enter `https://github.com/KosmosisDire/obsidian-webpage-export` as the repository.
+4. Enter `https://github.com/SdKay/obsidian-webpage-export` as the repository.
 5. Select Add Plugin
 
 ## Contributing
@@ -53,11 +56,7 @@ A contribution guide may come soon.
 
 This plugin takes a lot of work to maintain and continue adding features. If you want to fund the continued development of this plugin you can do so here:
 
-<a href="https://www.buymeacoffee.com/nathangeorge"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=nathangeorge&button_colour=3ebba4&font_colour=ffffff&font_family=Poppins&outline_colour=ffffff&coffee_colour=FFDD00"></a>
-
-or if you prefer paypal: 
-
-<a href="https://www.paypal.com/donate/?business=HHQBAXQQXT84Q&no_recurring=0&item_name=Hey+%F0%9F%91%8B+I+am+a+Computer+Science+student+working+on+obsidian+plugins.+Thanks+for+your+support%21&currency_code=USD"><img src="https://pics.paypal.com/00/s/MGNjZDA4MDItYzk3MC00NTQ1LTg4ZDAtMzM5MTc4ZmFlMGIy/file.PNG" style="width: 150px;"></a>
+<a href="https://paypal.me/ssdking"><img src="https://img.shields.io/badge/Donate-PayPal-003087?style=for-the-badge&logo=paypal&logoColor=white" alt="Donate via PayPal"></a>
 
 ## Testing
 

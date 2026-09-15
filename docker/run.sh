@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PLUGIN_DIR="/vault/.obsidian/plugins/webpage-html-export"
+PLUGIN_DIR="/vault/.obsidian/plugins/html-export"
 if [[ ! -d "$PLUGIN_DIR" ]]; then
   # Copy the plugin to the vault if it doesn't exist
   mkdir -p "$PLUGIN_DIR"

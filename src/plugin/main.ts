@@ -44,7 +44,7 @@ export default class HTMLExportPlugin extends Plugin {
 	}
 
 	async onload() {
-		console.log("Loading webpage-html-export plugin");
+		console.log("Loading html-export plugin");
 		this.checkForUpdates();
 		HTMLExportPlugin.pluginVersion = this.manifest.version;
 
@@ -146,12 +146,12 @@ export default class HTMLExportPlugin extends Plugin {
 
 		try {
 			let url =
-				"https://raw.githubusercontent.com/KosmosisDire/obsidian-webpage-export/master/manifest.json?cache=" +
+				"https://raw.githubusercontent.com/SdKay/obsidian-webpage-export/master/manifest.json?cache=" +
 				Date.now() +
 				"";
 			if (this.manifest.version.endsWith("b"))
 				url =
-					"https://raw.githubusercontent.com/KosmosisDire/obsidian-webpage-export/master/manifest-beta.json?cache=" +
+					"https://raw.githubusercontent.com/SdKay/obsidian-webpage-export/master/manifest-beta.json?cache=" +
 					Date.now() +
 					"";
 			const manifestResp = await requestUrl(url);
@@ -188,6 +188,6 @@ export default class HTMLExportPlugin extends Plugin {
 	}
 
 	onunload() {
-		ExportLog.log("unloading webpage-html-export plugin");
+		ExportLog.log("unloading html-export plugin");
 	}
 }
